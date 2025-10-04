@@ -13,158 +13,23 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
 }
 
-/* Dynamic Background Animations - Plumbing & Electrical Themed */
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* Simple fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-20px) rotate(120deg); }
-    66% { transform: translateY(10px) rotate(240deg); }
-}
-
-@keyframes wave {
-    0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
-    25% { transform: translateX(10px) translateY(-5px) rotate(90deg); }
-    50% { transform: translateX(0) translateY(-10px) rotate(180deg); }
-    75% { transform: translateX(-10px) translateY(-5px) rotate(270deg); }
-    100% { transform: translateX(0) translateY(0) rotate(360deg); }
-}
-
-@keyframes pipeFlow {
-    0% { transform: translateX(-100px) scale(0.8); opacity: 0; }
-    50% { transform: translateX(0) scale(1); opacity: 1; }
-    100% { transform: translateX(100px) scale(0.8); opacity: 0; }
-}
-
-@keyframes circuitFlow {
-    0% { stroke-dashoffset: 1000; }
-    100% { stroke-dashoffset: 0; }
-}
-
-@keyframes waterDrop {
-    0% { transform: translateY(-100px) scale(0); opacity: 0; }
-    50% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(100px) scale(0); opacity: 0; }
-}
-
-@keyframes electricalPulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; }
-    50% { transform: scale(1.2); opacity: 0.8; }
-}
-
-@keyframes backgroundRotate {
-    0% { opacity: 1; }
-    25% { opacity: 0.3; }
-    50% { opacity: 0.1; }
-    75% { opacity: 0.3; }
-    100% { opacity: 1; }
-}
-
-/* Hero Section with Plumbing & Electrical Theme + Real Project Images */
+/* Hero Section Background - Clean and Simple */
 .hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(-45deg, #1e40af 0%, #3b82f6 50%, #0ea5e9 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    z-index: 1;
-    transition: background 0.5s ease;
+    display: none;
 }
 
-/* Real Project Images as Dynamic Backgrounds - Higher Priority */
-.hero-background.project-bg-1 {
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-        url('https://i.postimg.cc/RqX1wxnK/ani1.jpg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    animation: backgroundRotate 20s ease-in-out infinite !important;
-}
-
-.hero-background.project-bg-2 {
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-        url('https://i.postimg.cc/SJPWtLdK/ani2.jpg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    animation: backgroundRotate 20s ease-in-out infinite 5s !important;
-}
-
-.hero-background.project-bg-3 {
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-        url('https://i.postimg.cc/bZ2QXGV9/ani3.jpg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    animation: backgroundRotate 20s ease-in-out infinite 10s !important;
-}
-
-.hero-background.project-bg-4 {
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-        url('https://i.postimg.cc/wt8D96S8/ani4.jpg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    animation: backgroundRotate 20s ease-in-out infinite 15s !important;
-}
-
-.hero-background.project-bg-5 {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                url('https://i.postimg.cc/RqX1wxnK/ani1.jpg');
-    background-size: cover;
-    background-position: center;
-    animation: backgroundRotate 20s ease-in-out infinite 20s;
-}
-
-/* Plumbing Pipes Background */
-.hero-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        /* Horizontal pipes - much more subtle */
-        linear-gradient(90deg, transparent 30%, rgba(59, 130, 246, 0.05) 30%, rgba(59, 130, 246, 0.05) 32%, transparent 32%),
-        linear-gradient(90deg, transparent 60%, rgba(59, 130, 246, 0.05) 60%, rgba(59, 130, 246, 0.05) 62%, transparent 62%),
-        linear-gradient(90deg, transparent 80%, rgba(59, 130, 246, 0.05) 80%, rgba(59, 130, 246, 0.05) 82%, transparent 82%),
-        /* Vertical pipes - much more subtle */
-        linear-gradient(0deg, transparent 20%, rgba(59, 130, 246, 0.05) 20%, rgba(59, 130, 246, 0.05) 22%, transparent 22%),
-        linear-gradient(0deg, transparent 50%, rgba(59, 130, 246, 0.05) 50%, rgba(59, 130, 246, 0.05) 52%, transparent 52%),
-        linear-gradient(0deg, transparent 70%, rgba(59, 130, 246, 0.05) 70%, rgba(59, 130, 246, 0.05) 72%);
-    background-size: 200px 200px, 300px 300px, 250px 250px, 200px 200px, 300px 300px, 250px 250px;
-    animation: float 20s ease-in-out infinite;
-    z-index: 2;
-    opacity: 0.3;
-}
-
-/* Water Drops Effect - much more subtle */
+.hero-background::before,
 .hero-background::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 90% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-    background-size: 100px 100px, 150px 150px, 80px 80px, 120px 120px;
-    animation: waterDrop 8s ease-in-out infinite;
-    z-index: 3;
-    opacity: 0.2;
+    display: none;
 }
 
 .hero-overlay {
@@ -173,7 +38,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.15);
     z-index: 2;
 }
 
@@ -184,45 +49,36 @@
     max-width: 900px;
     padding: 2rem;
     color: white;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .hero-title {
-    font-size: 4rem;
-    font-weight: 900;
+    font-size: 3.5rem;
+    font-weight: 700;
     color: white;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     margin-bottom: 1rem;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
-    position: relative;
-    z-index: 10;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 500;
     color: #fbbf24;
     margin-bottom: 1.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.6);
-    position: relative;
-    z-index: 10;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .hero-description {
-    font-size: 1.2rem;
-    color: #e5e7eb;
-    line-height: 1.7;
+    font-size: 1.1rem;
+    color: #f3f4f6;
+    line-height: 1.6;
     margin-bottom: 2.5rem;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-    position: relative;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-buttons {
@@ -233,70 +89,48 @@
 }
 
 .btn {
-    padding: 16px 32px;
-    border-radius: 8px;
+    padding: 14px 28px;
+    border-radius: 6px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
     border: none;
-    position: relative;
-    overflow: hidden;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
+    background: #f59e0b;
     color: white;
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
+    background: #d97706;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
+    background: white;
+    color: #1e40af;
+    border: 2px solid white;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.9);
 }
 
-/* Services Section - Circuit Board Theme */
+/* Services Section - Clean and Simple */
 .services {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    position: relative;
-    overflow: hidden;
+    background: #f9fafb;
     padding: 5rem 0;
 }
 
 .services::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: 
-        /* Circuit lines */
-        linear-gradient(90deg, transparent 40%, rgba(245, 158, 11, 0.1) 40%, rgba(245, 158, 11, 0.1) 42%, transparent 42%),
-        linear-gradient(0deg, transparent 40%, rgba(245, 158, 11, 0.1) 40%, rgba(245, 158, 11, 0.1) 42%, transparent 42%),
-        /* Circuit nodes */
-        radial-gradient(circle at 25% 25%, rgba(245, 158, 11, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.2) 0%, transparent 50%);
-    background-size: 100px 100px, 100px 100px, 200px 200px, 200px 200px;
-    animation: geometricMove 25s linear infinite;
-    z-index: 0;
+    display: none;
 }
 
 .section-header {
@@ -305,8 +139,8 @@
 }
 
 .section-header h2 {
-    font-size: 2.8rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 600;
     color: #1f2937;
     margin-bottom: 1rem;
 }
@@ -326,49 +160,41 @@
 
 .service-card {
     background: white;
-    padding: 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
     border: 1px solid #e5e7eb;
-    position: relative;
-    overflow: hidden;
 }
 
 .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #3b82f6, #f59e0b);
+    display: none;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
 }
 
 .service-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    border-radius: 20px;
+    width: 64px;
+    height: 64px;
+    background: #3b82f6;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: white;
 }
 
 .service-card:nth-child(2) .service-icon {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
+    background: #f59e0b;
 }
 
 .service-card:nth-child(3) .service-icon {
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: #10b981;
 }
 
 .service-card h3 {
@@ -401,30 +227,14 @@
     font-size: 0.9rem;
 }
 
-/* Why Choose Us - Construction Blueprint Theme */
+/* Why Choose Us - Clean Design */
 .why-choose {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    position: relative;
-    overflow: hidden;
+    background: white;
     padding: 5rem 0;
 }
 
 .why-choose::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        /* Blueprint grid */
-        linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-        /* Construction symbols */
-        radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-    background-size: 50px 50px, 50px 50px, 300px 300px, 300px 300px;
-    animation: wave 12s ease-in-out infinite;
+    display: none;
 }
 
 .why-choose-content {
@@ -435,9 +245,10 @@
 }
 
 .why-choose-text h2 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     margin-bottom: 2rem;
     color: #1f2937;
+    font-weight: 600;
 }
 
 .features-list {
@@ -535,43 +346,29 @@
 }
 
 .tab-btn {
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
     background: #e5e7eb;
     color: #6b7280;
-    border-radius: 25px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-weight: 500;
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: #3b82f6;
     color: white;
 }
 
-/* Projects Section - Blueprint Theme */
+/* Projects Section - Clean Design */
 .projects {
-    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-    position: relative;
-    overflow: hidden;
+    background: #f9fafb;
     padding: 5rem 0;
 }
 
 .projects::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 300px;
-    height: 300px;
-    background: 
-        /* Blueprint circles */
-        radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%),
-        /* Measurement lines */
-        linear-gradient(45deg, transparent 40%, rgba(59, 130, 246, 0.1) 40%, rgba(59, 130, 246, 0.1) 42%, transparent 42%);
-    background-size: 200px 200px, 100px 100px;
-    animation: float 18s ease-in-out infinite;
+    display: none;
 }
 
 .projects-grid {
@@ -582,16 +379,16 @@
 
 .project-card {
     background: white;
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
     border: 1px solid #e5e7eb;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .project-image {
@@ -699,28 +496,14 @@
     transform: scale(1.05);
 }
 
-/* About Section - Technical Drawing Theme */
+/* About Section - Clean Design */
 .about {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    position: relative;
-    overflow: hidden;
+    background: white;
     padding: 5rem 0;
 }
 
 .about::before {
-    content: '';
-    position: absolute;
-    bottom: -50px;
-    left: -50px;
-    width: 200px;
-    height: 200px;
-    background: 
-        /* Technical drawing elements */
-        radial-gradient(circle at center, rgba(245, 158, 11, 0.1) 0%, transparent 70%),
-        /* Dimension lines */
-        linear-gradient(90deg, transparent 40%, rgba(245, 158, 11, 0.1) 40%, rgba(245, 158, 11, 0.1) 42%, transparent 42%);
-    background-size: 150px 150px, 100px 100px;
-    animation: geometricMove 22s linear infinite reverse;
+    display: none;
 }
 
 .about-header {
@@ -729,9 +512,10 @@
 }
 
 .about-header h2 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     color: #1f2937;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .about-header p {
@@ -811,30 +595,14 @@
     font-weight: 600;
 }
 
-/* Contact Section - Control Panel Theme */
+/* Contact Section - Clean Design */
 .contact {
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-    position: relative;
-    overflow: hidden;
+    background: #1f2937;
     padding: 5rem 0;
 }
 
 .contact::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    height: 400px;
-    background: 
-        /* Control panel lights */
-        radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(245, 158, 11, 0.2) 0%, transparent 50%),
-        /* Switch indicators */
-        linear-gradient(90deg, transparent 40%, rgba(59, 130, 246, 0.1) 40%, rgba(59, 130, 246, 0.1) 42%, transparent 42%);
-    background-size: 200px 200px, 200px 200px, 100px 100px;
-    transform: translate(-50%, -50%);
-    animation: electricalPulse 30s ease-in-out infinite;
+    display: none;
 }
 
 .contact-header {
@@ -843,9 +611,10 @@
 }
 
 .contact-header h2 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     color: white;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .contact-content {
@@ -862,11 +631,11 @@
 }
 
 .contact-details-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     padding: 2rem;
-    border-radius: 16px;
+    border-radius: 8px;
     margin-bottom: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-item {
@@ -955,13 +724,13 @@
 .form-group textarea,
 .form-group select {
     width: 100%;
-    padding: 14px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.2s ease;
     font-family: inherit;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     color: white;
 }
 
@@ -975,8 +744,7 @@
 .form-group select:focus {
     outline: none;
     border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 /* Footer */
@@ -1280,15 +1048,6 @@ body {
     animation: logoLine 2s ease-in-out infinite;
 }
 
-@keyframes logoShine {
-    0%, 100% { transform: translateX(-100%); }
-    50% { transform: translateX(100%); }
-}
-
-@keyframes logoLine {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
 
 /* Footer logo styling */
 .footer-logo {
@@ -1523,153 +1282,12 @@ body {
     background: url('https://i.postimg.cc/8Jdfb9k2/3-bhk.jpg');
 } 
 
-/* Section Logos - Appearing throughout the website */
+/* Section Logos - Simple and Clean */
 .section-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 2rem;
-    opacity: 0.8;
+    display: none;
 }
 
-.section-logo-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
-    border-radius: 15px;
-    position: relative;
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
-    overflow: hidden;
-}
-
-.section-logo-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 30%, rgba(255, 255, 255, 0.2) 70%, transparent 70%);
-    animation: logoShine 4s ease-in-out infinite;
-}
-
-.section-logo-icon .fa-bolt {
-    color: #fbbf24;
-    font-size: 2rem;
-    margin-right: -3px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    z-index: 2;
-    position: relative;
-}
-
-.section-logo-icon .fa-tint {
-    color: #60a5fa;
-    font-size: 1.8rem;
-    margin-left: -3px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    z-index: 2;
-    position: relative;
-}
-
-.section-logo-text {
-    font-size: 1.6rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
-    position: relative;
-}
-
-.section-logo-text::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #f59e0b, #3b82f6);
-    background-size: 200% 100%;
-    animation: logoLine 3s ease-in-out infinite;
-}
-
-/* Hero Logo - Special styling for hero section */
+/* Hero Logo - Simple and Clean */
 .hero-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-}
-
-.hero-logo-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
-    overflow: hidden;
-}
-
-.hero-logo-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 30%, rgba(255, 255, 255, 0.3) 70%, transparent 70%);
-    animation: logoShine 3s ease-in-out infinite;
-}
-
-.hero-logo-icon .fa-bolt {
-    color: #fbbf24;
-    font-size: 2.5rem;
-    margin-right: -3px;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-    z-index: 2;
-    position: relative;
-}
-
-.hero-logo-icon .fa-tint {
-    color: #60a5fa;
-    font-size: 2.2rem;
-    margin-left: -3px;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-    z-index: 2;
-    position: relative;
-}
-
-.hero-logo-text {
-    font-size: 2rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 50%, #e5e7eb 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
-    position: relative;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.hero-logo-text::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
-    background-size: 200% 100%;
-    animation: logoLine 2.5s ease-in-out infinite;
+    display: none;
 } 
