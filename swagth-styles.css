@@ -291,33 +291,50 @@
     background: url('https://i.postimg.cc/sX0Hk8V/kotighra.jpg');
     background-size: cover;
     background-position: center;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transition: background 0.8s ease;
     position: relative;
+    overflow: hidden;
+}
+
+.why-choose-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.why-choose-background:hover::after {
+    opacity: 1;
 }
 
 /* Dynamic background classes for rotation */
 .why-choose-background.bg-1 {
-    background: url('https://i.postimg.cc/sX0Hk8V/kotighra.jpg') !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), url('https://i.postimg.cc/sX0Hk8V/kotighra.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
 }
 
 .why-choose-background.bg-2 {
-    background: url('https://i.postimg.cc/D8J1bjkc/kotichane1.jpg') !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), url('https://i.postimg.cc/D8J1bjkc/kotichane1.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
 }
 
 .why-choose-background.bg-3 {
-    background: url('https://i.postimg.cc/56hL5BfW/sdasdsad.jpg') !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), url('https://i.postimg.cc/56hL5BfW/sdasdsad.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
 }
 
 .why-choose-background.bg-4 {
-    background: url('https://i.postimg.cc/pmK8smdh/sfsf.jpg') !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), url('https://i.postimg.cc/pmK8smdh/sfsf.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -387,8 +404,8 @@
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .project-image {
@@ -396,6 +413,11 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
 }
 
 /* Project Images - Same as ANUV Engineers since we take their plumbing & electrical work */
@@ -542,7 +564,12 @@
     background-size: cover;
     background-position: center;
     border: 4px solid #3b82f6;
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
+    transition: transform 0.3s ease;
+}
+
+.founder-photo:hover {
+    transform: scale(1.05);
 }
 
 .founder-text h3 {
@@ -1173,24 +1200,20 @@ body {
 
 /* Portfolio Section */
 .portfolio {
-    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
     padding: 5rem 0;
+    position: relative;
 }
 
 .portfolio::before {
     content: '';
     position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    background: 
-        radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%),
-        linear-gradient(45deg, transparent 40%, rgba(59, 130, 246, 0.1) 40%, rgba(59, 130, 246, 0.1) 42%, transparent 42%);
-    background-size: 150px 150px, 100px 100px;
-    animation: float 20s ease-in-out infinite;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    z-index: 0;
 }
 
 .portfolio-grid {
@@ -1205,17 +1228,17 @@ body {
 
 .portfolio-card {
     position: relative;
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
     border: 1px solid #e5e7eb;
     cursor: pointer;
 }
 
 .portfolio-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .portfolio-image {
