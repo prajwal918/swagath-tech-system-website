@@ -182,33 +182,37 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Get form data
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const phone = contactForm.querySelector('input[type="tel"]').value;
-        const service = contactForm.querySelector('select').value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        // Simple validation
-        if (!name || !email || !phone || !service || !message) {
-            showNotification('Please fill in all fields', 'error');
-            return;
+        try {
+            // Get form data
+            const name = contactForm.querySelector('input[type="text"]').value;
+            const email = contactForm.querySelector('input[type="email"]').value;
+            const phone = contactForm.querySelector('input[type="tel"]').value;
+            const service = contactForm.querySelector('select').value;
+            const message = contactForm.querySelector('textarea').value;
+            
+            // Simple validation
+            if (!name || !email || !phone || !service || !message) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showNotification('Please enter a valid email address', 'error');
+                return;
+            }
+            
+            if (!isValidPhone(phone)) {
+                showNotification('Please enter a valid phone number', 'error');
+                return;
+            }
+            
+            // Simulate form submission
+            showNotification('Thank you! Your message has been sent successfully. We will contact you soon.', 'success');
+            contactForm.reset();
+        } catch (error) {
+            console.error('Error processing form submission:', error);
+            showNotification('An unexpected error occurred. Please try again later.', 'error');
         }
-        
-        if (!isValidEmail(email)) {
-            showNotification('Please enter a valid email address', 'error');
-            return;
-        }
-        
-        if (!isValidPhone(phone)) {
-            showNotification('Please enter a valid phone number', 'error');
-            return;
-        }
-        
-        // Simulate form submission
-        showNotification('Thank you! Your message has been sent successfully. We will contact you soon.', 'success');
-        contactForm.reset();
     });
 }
 
@@ -382,23 +386,27 @@ document.head.appendChild(style);
 
 // Initialize all animations and interactions
 document.addEventListener('DOMContentLoaded', () => {
-    // Add stagger animation to service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-    });
-    
-    // Add stagger animation to info cards
-    const infoCards = document.querySelectorAll('.info-card');
-    infoCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-    });
-    
-    // Add stagger animation to feature items
-    const featureItems = document.querySelectorAll('.feature-item');
-    featureItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
-    });
+    try {
+        // Add stagger animation to service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+        
+        // Add stagger animation to info cards
+        const infoCards = document.querySelectorAll('.info-card');
+        infoCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+        
+        // Add stagger animation to feature items
+        const featureItems = document.querySelectorAll('.feature-item');
+        featureItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+        });
+    } catch (error) {
+        console.error('Error during DOMContentLoaded interactions initialization:', error);
+    }
 });
 
 // Add smooth reveal animation for sections
@@ -791,7 +799,11 @@ function initDynamicBackgrounds() {
 
 // Initialize dynamic backgrounds when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    initDynamicBackgrounds();
-    initWhyChooseBackgroundRotation(); // Initialize Why Choose Us background rotation
-    addScrollIndicator(); // Add scroll indicator
+    try {
+        initDynamicBackgrounds();
+        initWhyChooseBackgroundRotation(); // Initialize Why Choose Us background rotation
+        addScrollIndicator(); // Add scroll indicator
+    } catch (error) {
+        console.error('Error initializing dynamic components:', error);
+    }
 }); 

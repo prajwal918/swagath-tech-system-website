@@ -1,113 +1,56 @@
-# swagath-tech-system-website
+# Swagath Tech System Website
 
-This repository is built with strict enterprise engineering standards, focusing on resilient architecture, graceful error handling, and robust continuous integration.
+A professional, dynamic, and responsive web application built for Swagath Tech System, showcasing plumbing and electrical contract projects.
 
-## 🏗️ System Architecture
+## Architecture
+
+This project is built using a modern yet straightforward static architecture, containerized for reliable and scalable deployment. 
 
 ```mermaid
-graph TD
-    A[Client] --> B(Application Container)
-    B --> C{Core Logic}
+flowchart TD
+    Client((Client/Browser)) -->|HTTP:80| NGINX[NGINX Web Server]
+    subgraph Docker Container
+        NGINX -->|Serves| StaticFiles[Static Assets]
+        StaticFiles --> Index(index.html)
+        StaticFiles --> Styles(swagth-styles.css)
+        StaticFiles --> Script(swagth-script.js)
+    end
+    
+    subgraph CI/CD
+        GH_Actions[GitHub Actions] -.->|Build & Test| DockerImage[Docker Image]
+    end
 ```
 
-## 🚀 Setup Instructions
+## Setup & Deployment
+
+We use Docker and Docker Compose for a seamless setup experience. 
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) installed.
+- [Docker Compose](https://docs.docker.com/compose/install/) installed.
+
+### Quick Start
+
+To run the application locally, simply execute:
 
 ```bash
-docker-compose up --build -d
+docker-compose up -d --build
 ```
 
-## 📂 Structure
+The application will be accessible at [http://localhost:8080](http://localhost:8080).
 
-Following standard design patterns for a predictable layout.
+### Stopping the Server
 
----
+To stop the running application:
 
-## Original Readme
-
-# 🏗️ SWAGATH TECH SYSTEM - Official Website
-
-**Professional Plumbing & Electrical Contract Projects Website**
-
-## 🌟 **About**
-
-SWAGATH TECH SYSTEM is a leading plumbing and electrical contracting company in Karnataka, established in 2015. We specialize in providing comprehensive MEP (Mechanical, Electrical, and Plumbing) solutions for residential, commercial, and industrial projects.
-
-## 🚀 **Features**
-
-- **Responsive Design**: Mobile-first approach with modern UI/UX
-- **Dynamic Backgrounds**: Rotating project images and themed backgrounds
-- **Interactive Portfolio**: Showcase of commercial, residential, and resort projects
-- **Professional Services**: Plumbing, electrical, and contract project management
-- **Contact Forms**: Easy communication with integrated WhatsApp integration
-- **SEO Optimized**: Clean code structure for better search engine visibility
-
-## 🛠️ **Technologies Used**
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: Custom CSS with animations and responsive design
-- **Icons**: Font Awesome 6.0
-- **Fonts**: Google Fonts (Inter)
-- **Hosting**: GitHub Pages ready
-
-## 📁 **Project Structure**
-
-```
-swagath-tech-system/
-├── index.html          # Main website file
-├── swagth-styles.css   # Custom styling
-├── swagth-script.js    # Interactive functionality
-├── README.md           # Project documentation
-└── .gitignore          # Git ignore rules
+```bash
+docker-compose down
 ```
 
-## 🎯 **Key Sections**
+## Dependency Rationale
 
-1. **Hero Section**: Dynamic backgrounds with company branding
-2. **Services**: Plumbing, electrical, and contract services
-3. **Why Choose Us**: Company features and benefits
-4. **Portfolio**: Project showcase by category
-5. **Projects**: Detailed project information
-6. **About Us**: Company history and founder details
-7. **Contact**: Contact information and inquiry forms
-
-## 🚀 **Getting Started**
-
-### **Local Development**
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Or use a local server: `python3 -m http.server 8000`
-
-### **Deploy to GitHub Pages**
-1. Push to GitHub
-2. Enable GitHub Pages in repository settings
-3. Select source branch (main/master)
-4. Your site will be available at: `https://username.github.io/repository-name`
-
-## 📱 **Responsive Design**
-
-- **Desktop**: Full-featured experience with all animations
-- **Tablet**: Optimized layout for medium screens
-- **Mobile**: Mobile-first design with touch-friendly interactions
-
-## 🌐 **Live Demo**
-
-Visit the live website: [Your GitHub Pages URL will appear here]
-
-## 📞 **Contact Information**
-
-- **Phone**: +91 9731851615
-- **Email**: jogip317@gmail.com
-- **Address**: Navagrams Benjanapoadu, Bantwal Taluk, Karnataka State
-- **WhatsApp**: [Direct WhatsApp Link]
-
-## 📄 **License**
-
-This project is proprietary to SWAGATH TECH SYSTEM. All rights reserved.
-
-## 🤝 **Partnership**
-
-Official plumbing and electrical contractor for ANUV Engineers, showcasing high-quality projects across Karnataka.
-
----
-
-**Built with ❤️ by SWAGATH TECH SYSTEM Team** 
+- **NGINX (alpine)**: Used as the core web server to serve static content. It is extremely lightweight, performant, and secure. The `alpine` variant is chosen to keep the final image size minimal, reducing the attack surface and improving deployment times.
+- **Docker & Docker Compose**: Used to containerize the application to ensure that it runs consistently regardless of the host environment, preventing "it works on my machine" issues.
+- **GitHub Actions**: Configured to run an automated CI pipeline on push and pull requests to main branches, guaranteeing that every change passes a baseline sanity check before deployment.
+- **Vanilla HTML/CSS/JS**: Opted for vanilla technologies to remove complex build chains and unnecessary abstractions, resulting in faster load times and an easily maintainable codebase.

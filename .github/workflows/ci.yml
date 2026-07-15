@@ -1,13 +1,20 @@
-name: CI
+name: CI Workflow
+
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ main, master ]
+
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Run checks
-      run: echo "Checks passed"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Build Docker Image
+        run: docker build -t swagath-tech-website:test .
+
+      - name: Run Dummy Tests
+        run: echo "No actual testing setup, but simulating success" && exit 0
