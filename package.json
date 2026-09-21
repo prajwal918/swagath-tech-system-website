@@ -1,0 +1,19 @@
+{
+  "name": "swagath-tech-system-website",
+  "version": "2.0.0",
+  "description": "Enterprise-grade website for Swagath Tech System with hardened Nginx, OWASP security headers, and automated testing.",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/app.test.js",
+    "validate": "node --test tests/app.test.js"
+  },
+  "keywords": [
+    "swagath-tech",
+    "nginx",
+    "docker",
+    "security-hardened",
+    "devsecops"
+  ],
+  "author": "Prajwal Jogi",
+  "license": "UNLICENSED"
+}

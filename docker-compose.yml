@@ -9,11 +9,26 @@ services:
     container_name: swagath_tech_web
     ports:
       - "8080:80"
-    volumes:
-      - ./src:/usr/share/nginx/html:ro
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+      - CHOWN
+      - SETGID
+      - SETUID
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 128M
+        reservations:
+          cpus: '0.10'
+          memory: 32M
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
       interval: 30s
-      timeout: 10s
+      timeout: 5s
       retries: 3

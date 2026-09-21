@@ -1,18 +1,26 @@
 FROM nginx:alpine
 
-# Add metadata labels
+# Metadata
 LABEL maintainer="swagath-tech"
-LABEL version="1.0"
-LABEL description="Swagath Tech System Website"
+LABEL version="2.0.0"
+LABEL description="Swagath Tech System Website - Hardened Enterprise Web Stack"
+LABEL security.hardened="true"
 
-# Remove default nginx static assets
-RUN rm -rf /usr/share/nginx/html/*
+# Remove default nginx static assets and configuration
+RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/default.conf
 
-# Copy source code
+# Copy custom enterprise hardened nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy source code with appropriate permissions
 COPY ./src /usr/share/nginx/html
 
-# Add a health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+# Ensure proper permissions on web root
+RUN chmod -R 755 /usr/share/nginx/html && \
+    chown -R nginx:nginx /usr/share/nginx/html
+
+# Health check to ensure zero-downtime reliability
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
   CMD wget -q --spider http://localhost/ || exit 1
 
 EXPOSE 80
